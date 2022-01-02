@@ -22,7 +22,7 @@
     "prettier-watch:win32": "onchange \"src/**/*.ts\" -- prettier --write {{changed}}",
     "prettier-watch:darwin:linux": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
     "prettier-watch:default": "onchange 'src/**/*.ts' -- prettier --write {{changed}}",
-    "test": "jest",
+    "test": "jest && npm run prettier-format && npm run lint",
     "test:dev": "jest --watchAll"
   },
   "husky": {
@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-jest": "^25.3.4",
     "jest": "^26.5.3",
     "npm": "^8.3.0",
     "ts-jest": "^26.4.1"
