@@ -1,0 +1,27 @@
+service: serverless-lambda-architecture
+frameworkVersion: '3'
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  login:
+    handler: src/controllers/auth.controller.login
+    maximumRetryAttempts: 1
+    events:
+      - httpApi:
+          method: post
+          path: login
+
+  getPost:
+    handler: src/controllers/posts.controller.get
+    maximumRetryAttempts: 1
+    events:
+      - httpApi:
+          method: get
+          path: posts

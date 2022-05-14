@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+require("reflect-metadata");
+var tsyringe_1 = require("tsyringe");
+var identity_context_1 = require("../context/identity.context");
+var authModel_1 = __importDefault(require("../models/authModel"));
+var postModel_1 = __importDefault(require("../models/postModel"));
+var userModel_1 = __importDefault(require("../models/userModel"));
+var config_1 = require("../repository/config");
+var database_1 = __importDefault(require("../repository/database"));
+tsyringe_1.container.registerSingleton('Config', config_1.Config);
+tsyringe_1.container.registerSingleton('AuthModel', authModel_1.default);
+tsyringe_1.container.register('IdentityContext', identity_context_1.IdentityContext);
+tsyringe_1.container.register('Database', database_1.default);
+tsyringe_1.container.register('PostModel', postModel_1.default);
+tsyringe_1.container.register('UserModel', userModel_1.default);
+exports.default = tsyringe_1.container;
